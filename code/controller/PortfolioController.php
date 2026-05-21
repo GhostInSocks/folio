@@ -7,7 +7,7 @@ class PortfolioController {
         if ($post) {
             require_once 'view/detail.php';
         } else {
-            echo "Projekt ne obstaja.";
+            echo "Project doesn't exist.";
         }
     }
 }
