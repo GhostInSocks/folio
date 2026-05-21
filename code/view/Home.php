@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v=<?= time(); ?>">
 <header class="main-header">
     <div class="header-left">
         <span class="logo">folio<strong>.</strong></span>

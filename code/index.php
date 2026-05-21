@@ -40,6 +40,13 @@ switch ($page) {
     case 'logout':
         AuthController::logout();
         break;
+    case 'profile':
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: index.php?page=login");
+            exit;
+        }
+        echo "Tukaj bo profil od uporabnika: " . $_SESSION['username'];
+        break;
     default:
         echo "404 - Stran ne obstaja.";
         break;
