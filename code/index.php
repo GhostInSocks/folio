@@ -45,7 +45,9 @@ switch ($page) {
             header("Location: index.php?page=login");
             exit;
         }
-        echo "Tukaj bo profil od uporabnika: " . $_SESSION['username'];
+        require_once 'model/User.php';
+        $userPosts = User::getUserPosts($_SESSION['user_id']);
+        require_once 'view/profile.php';
         break;
     default:
         echo "404 - Stran ne obstaja.";

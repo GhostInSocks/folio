@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="assets/style.css?v=<?= time(); ?>">
 <header class="main-header">
     <div class="header-left">
-        <span class="logo">folio<strong>.</strong></span>
+        <span class="logo" onclick="window.location.href='index.php?page=home'" style="cursor:pointer;">folio<strong>.</strong></span>
         <div class="search-bar">
             <input type="text" placeholder="Search projects and creators...">
         </div>
@@ -36,6 +36,7 @@
         <button class="cat-btn">Motion</button>
         <button class="cat-btn">Branding</button>
     </div>
+
     <div class="projects-grid">
     <?php foreach ($posts as $post): ?>
         <div class="project-card">
@@ -61,15 +62,12 @@
                         <div class="avatar-placeholder">
                             <?= strtoupper(substr(htmlspecialchars($post['username'] ?? 'U'), 0, 2)) ?>
                         </div>
-                        <span class="author-name">Sarah Chen</span>
-                    </div>
-                    <div class="card-stats">
-                        <span class="likes-count">❤️ 248</span>
+                        <span class="author-name"><?= htmlspecialchars($post['username'] ?? 'Neznan avtor') ?></span>
                     </div>
                 </div>
             </div>
 
         </div>
     <?php endforeach; ?>
-  </div>
+    </div>
 </main>

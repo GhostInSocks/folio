@@ -2,11 +2,17 @@
 require_once 'model/DBInit.php';
 
 class Post {
-    public static function getAll() {
+      public static function getAll() {
         $db = DBInit::getInstance();
-        $statement = $db->prepare("SELECT * FROM cards");
-        $statement->execute();
-        return $statement->fetchAll();
+        $stmt = $db->prepare("
+            SELECT cards.*, users.username
+            FROM cards
+            JOIN users ON cards.user_id = users.id
+            ORDER BY cards.id DESC
+        ");
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function getById($id) {
