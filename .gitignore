@@ -1,0 +1,7 @@
+config.php
+db.php
+
+# Sistemske datoteke
+.DS_Store
+Thumbs.db
+.atom/
