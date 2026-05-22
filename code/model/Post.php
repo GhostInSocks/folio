@@ -39,4 +39,21 @@ class Post {
 
         $statement->execute();
     }
+
+    public static function update($id, $title, $content, $image_url) {
+        $db = DBInit::getInstance();
+
+        $statement = $db->prepare("
+            UPDATE cards
+            SET title = :title, content = :content, image_url = :image_url
+            WHERE id = :id
+        ");
+
+        $statement->bindParam(':title', $title);
+        $statement->bindParam(':content', $content);
+        $statement->bindParam(':image_url', $image_url);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $statement->execute();
+    }
 }
