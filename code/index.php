@@ -49,6 +49,14 @@ switch ($page) {
         $userPosts = User::getUserPosts($_SESSION['user_id']);
         require_once 'view/profile.php';
         break;
+    case 'edit':
+        $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            PostController::update($id, $_POST);
+        } else {
+            PostController::edit($id);
+        }
+        break;
     default:
         echo "404 - Stran ne obstaja.";
         break;

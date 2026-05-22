@@ -73,10 +73,11 @@
                                     <?= htmlspecialchars($post['title']) ?>
                                 </a>
                             </h3>
-                            <div class="card-footer">
+                            <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                                 <div class="author-info">
-                                    <span class="author-name">by <?= htmlspecialchars($post['username']) ?></span>
+                                    <span class="author-name">by <?= htmlspecialchars($post['username'] ?? $_SESSION['username']) ?></span>
                                 </div>
+                                <a href="index.php?page=edit&id=<?= $post['id'] ?>" class="nav-link" style="font-size: 13px; color: #1a1a1a; font-weight: 500;">Edit →</a>
                             </div>
                         </div>
                     </div>
