@@ -1,0 +1,137 @@
+.create-fullscreen-wrapper {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+    padding: 40px 20px;
+}
+
+.create-card-container {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 600px;
+    padding: 40px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+}
+
+.create-header {
+    margin-bottom: 32px;
+}
+
+.create-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: #1a1a1a;
+}
+
+.create-header p {
+    color: #7a7a7a;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.form-group label .required {
+    color: #ff4d4d;
+}
+
+.form-group input[type="text"],
+.form-group input[type="url"],
+.form-group textarea {
+    width: 100%;
+    background-color: #f5f5f5;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: #1a1a1a;
+    transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    background-color: #ffffff;
+    border-color: #cccccc;
+}
+
+.form-group textarea {
+    height: 120px;
+    resize: none;
+    line-height: 1.5;
+}
+
+.form-hint {
+    font-size: 12px;
+    color: #999999;
+    margin-top: 2px;
+}
+
+.char-count {
+    font-size: 12px;
+    color: #999999;
+    text-align: right;
+    margin-top: 4px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 8px;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 24px;
+}
+
+.btn-cancel {
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 1px solid #e0e0e0;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-cancel:hover {
+    background: #f5f5f5;
+}
+
+.btn-publish {
+    background: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-publish:hover {
+    background: #333333;
+}

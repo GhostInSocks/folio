@@ -23,16 +23,19 @@ class Post {
         return $statement->fetch();
     }
 
-    public static function insert($user_id, $category_id, $title, $content) {
+    public static function insert($user_id, $category_id, $title, $content, $image_url) {
         $db = DBInit::getInstance();
 
-        $statement = $db->prepare("INSERT INTO cards (user_id, category_id, title, content)
-                                   VALUES (:user_id, :category_id, :title, :content)");
+        $statement = $db->prepare("
+            INSERT INTO cards (user_id, category_id, title, content, image_url)
+            VALUES (:user_id, :category_id, :title, :content, :image_url)
+        ");
 
         $statement->bindParam(':user_id', $user_id);
         $statement->bindParam(':category_id', $category_id);
         $statement->bindParam(':title', $title);
         $statement->bindParam(':content', $content);
+        $statement->bindParam(':image_url', $image_url);
 
         $statement->execute();
     }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($_SESSION['username']) ?> - Profile</title>
     <link class="style-sheet" rel="stylesheet" href="assets/style.css?v=<?= time(); ?>">
-    <link class="style-sheet" rel="stylesheet" href="assets/profile.css">
+    <link class="style-sheet" rel="stylesheet" href="assets/profile.css?v=<?= time(); ?>">
 </head>
 <body>
 
@@ -60,9 +60,9 @@
             <?php else: ?>
                 <?php foreach ($userPosts as $post): ?>
                     <div class="project-card">
-                        <div class="card-image-wrapper">
-                            <img src="assets/slika.jpg" alt="<?= htmlspecialchars($post['title']) ?>" class="card-image">
-                        </div>
+                      <div class="card-image-wrapper">
+                          <img src="<?= !empty($post['image_url']) ? htmlspecialchars($post['image_url']) : 'assets/slika.jpg' ?>" alt="<?= htmlspecialchars($post['title']) ?>" class="card-image">
+                      </div>
                         <div class="card-content">
                             <div class="card-tags">
                                 <span class="tag">Design</span>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign up - folio.</title>
-    <link rel="stylesheet" href="assets/auth.css">
+    <link rel="stylesheet" href="assets/auth.css?v=<?= time(); ?>">
 </head>
 <body>
 

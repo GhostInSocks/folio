@@ -41,9 +41,9 @@
     <?php foreach ($posts as $post): ?>
         <div class="project-card">
 
-            <div class="card-image-wrapper">
-                <img src="assets/slika.jpg" alt="<?= htmlspecialchars($post['title']) ?>" class="card-image">
-            </div>
+          <div class="card-image-wrapper">
+              <img src="<?= !empty($post['image_url']) ? htmlspecialchars($post['image_url']) : 'assets/slika.jpg' ?>" alt="<?= htmlspecialchars($post['title']) ?>" class="card-image">
+          </div>
 
             <div class="card-content">
                 <div class="card-tags">
