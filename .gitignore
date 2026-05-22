@@ -1,5 +1,6 @@
 config.php
 db.php
+code/seed.php
 
 # Sistemske datoteke
 .DS_Store

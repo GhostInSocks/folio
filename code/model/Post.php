@@ -56,4 +56,11 @@ class Post {
 
         $statement->execute();
     }
+
+    public static function delete($id) {
+        $db = DBInit::getInstance();
+        $statement = $db->prepare("DELETE FROM cards WHERE id = :id");
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+    }
 }

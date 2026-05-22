@@ -47,8 +47,11 @@
             </div>
 
             <div class="form-actions">
-                <button type="button" class="btn-cancel" onclick="window.location.href='index.php?page=profile'">Cancel</button>
-                <button type="submit" class="btn-publish">Save Changes</button>
+                <button type="button" class="btn-delete" onclick="confirmDelete(<?= $post['id'] ?>)">Delete Project</button>
+                <div style="display: flex; gap: 12px;">
+                    <button type="button" class="btn-cancel" onclick="window.location.href='index.php?page=profile'">Cancel</button>
+                    <button type="submit" class="btn-publish">Save Changes</button>
+                </div>
             </div>
 
         </form>
@@ -56,10 +59,14 @@
 </div>
 
 <script>
+    function confirmDelete(postId) {
+        if (confirm("Are you sure you want to delete this project? This action cannot be undone.")) {
+            window.location.href = "index.php?page=delete&id=" + postId;
+        }
+    }
     const textarea = document.getElementById('description');
     const charCount = document.querySelector('.char-count');
     charCount.textContent = `${textarea.value.length} / 500`;
-
     textarea.addEventListener('input', () => {
         charCount.textContent = `${textarea.value.length} / 500`;
     });

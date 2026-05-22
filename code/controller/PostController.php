@@ -73,4 +73,21 @@ class PostController {
             exit;
         }
     }
+
+    public static function destroy($id) {
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: index.php?page=login");
+            exit;
+        }
+        require_once 'model/Post.php';
+        $post = Post::getById($id);
+        if (!$post || $post['user_id'] != $_SESSION['user_id']) {
+            header("Location: index.php?page=home");
+            exit;
+        }
+
+        Post::delete($id);
+        header("Location: index.php?page=profile");
+        exit;
+    }
 }

@@ -57,6 +57,10 @@ switch ($page) {
             PostController::edit($id);
         }
         break;
+    case 'delete':
+          $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+          PostController::destroy($id);
+          break;
     default:
         echo "404 - Stran ne obstaja.";
         break;
