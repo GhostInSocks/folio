@@ -18,10 +18,18 @@ class Post {
 
     public static function getById($id) {
         $db = DBInit::getInstance();
-        $statement = $db->prepare("SELECT * FROM cards WHERE id = :id");
-        $statement->bindParam(':id', $id, PDO::PARAM_INT);
-        $statement->execute();
-        return $statement->fetch();
+        $stmt = $db->prepare("
+            SELECT cards.*, users.username, categories.name AS category_name
+            FROM cards
+            JOIN users ON cards.user_id = users.id
+            JOIN categories ON cards.category_id = categories.id
+            WHERE cards.id = :id
+        ");
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public static function insert($user_id, $category_id, $title, $content, $image_url) {
@@ -64,5 +72,25 @@ class Post {
         $statement = $db->prepare("DELETE FROM cards WHERE id = :id");
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         $statement->execute();
+    }
+
+    public static function search($query) {
+        $db = DBInit::getInstance();
+        $stmt = $db->prepare("
+            SELECT cards.*, users.username, categories.name AS category_name
+            FROM cards
+            JOIN users ON cards.user_id = users.id
+            JOIN categories ON cards.category_id = categories.id
+            WHERE cards.title LIKE :query
+               OR cards.content LIKE :query
+               OR users.username LIKE :query
+            ORDER BY cards.id DESC
+        ");
+
+        $searchTerm = "%" . $query . "%";
+        $stmt->bindParam(':query', $searchTerm);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
