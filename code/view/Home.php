@@ -3,7 +3,12 @@
     <div class="header-left">
         <span class="logo" onclick="window.location.href='index.php?page=home'" style="cursor:pointer;">folio<strong>.</strong></span>
         <div class="search-bar">
-            <input type="text" placeholder="Search projects and creators...">
+            <form method="GET" action="index.php">
+                <input type="hidden" name="page" value="home">
+
+                <input type="text" name="search" placeholder="Search projects and creators..."
+                       value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
+            </form>
         </div>
     </div>
 
