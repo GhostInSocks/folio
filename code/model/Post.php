@@ -2,12 +2,13 @@
 require_once 'model/DBInit.php';
 
 class Post {
-      public static function getAll() {
+    public static function getAll() {
         $db = DBInit::getInstance();
         $stmt = $db->prepare("
-            SELECT cards.*, users.username
+            SELECT cards.*, users.username, categories.name AS category_name
             FROM cards
             JOIN users ON cards.user_id = users.id
+            JOIN categories ON cards.category_id = categories.id
             ORDER BY cards.id DESC
         ");
 
@@ -40,18 +41,19 @@ class Post {
         $statement->execute();
     }
 
-    public static function update($id, $title, $content, $image_url) {
+    public static function update($id, $title, $content, $image_url, $category_id) {
         $db = DBInit::getInstance();
 
         $statement = $db->prepare("
             UPDATE cards
-            SET title = :title, content = :content, image_url = :image_url
+            SET title = :title, content = :content, image_url = :image_url, category_id = :category_id
             WHERE id = :id
         ");
 
         $statement->bindParam(':title', $title);
         $statement->bindParam(':content', $content);
         $statement->bindParam(':image_url', $image_url);
+        $statement->bindParam(':category_id', $category_id, PDO::PARAM_INT);
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
 
         $statement->execute();

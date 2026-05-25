@@ -28,18 +28,18 @@
     </div>
 
     <div class="categories-filter">
-        <button class="cat-btn active">All</button>
-        <button class="cat-btn">Design</button>
-        <button class="cat-btn">Development</button>
-        <button class="cat-btn">Photography</button>
-        <button class="cat-btn">Writing</button>
-        <button class="cat-btn">Motion</button>
-        <button class="cat-btn">Branding</button>
+        <button class="cat-btn active" data-filter="all">All</button>
+        <button class="cat-btn" data-filter="1">Design</button>
+        <button class="cat-btn" data-filter="2">Development</button>
+        <button class="cat-btn" data-filter="3">Photography</button>
+        <button class="cat-btn" data-filter="4">Writing</button>
+        <button class="cat-btn" data-filter="5">Motion</button>
+        <button class="cat-btn" data-filter="6">Branding</button>
     </div>
 
     <div class="projects-grid">
     <?php foreach ($posts as $post): ?>
-        <div class="project-card">
+        <div class="project-card" data-category="<?= $post['category_id'] ?>">
 
           <div class="card-image-wrapper">
               <img src="<?= !empty($post['image_url']) ? htmlspecialchars($post['image_url']) : 'assets/slika.jpg' ?>" alt="<?= htmlspecialchars($post['title']) ?>" class="card-image">
@@ -47,8 +47,7 @@
 
             <div class="card-content">
                 <div class="card-tags">
-                    <span class="tag">Design</span>
-                    <span class="tag">Architecture</span>
+                    <span class="tag"><?= htmlspecialchars($post['category_name']) ?></span>
                 </div>
 
                 <h3 class="card-title">
@@ -71,3 +70,31 @@
     <?php endforeach; ?>
     </div>
 </main>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const filterButtons = document.querySelectorAll(".cat-btn");
+      const projectCards = document.querySelectorAll(".project-card");
+
+      filterButtons.forEach(button => {
+          button.addEventListener("click", function() {
+              // 1. Odstrani 'active' razred z vseh gumbov in ga dodaj kliknjenemu
+              filterButtons.forEach(btn => btn.classList.remove("active"));
+              this.classList.add("active");
+
+              const filterValue = this.getAttribute("data-filter");
+
+              // 2. Filtriraj kartice
+              projectCards.forEach(card => {
+                  const cardCategory = card.getAttribute("data-category");
+
+                  if (filterValue === "all" || filterValue === cardCategory) {
+                      card.classList.remove("hidden");
+                  } else {
+                      card.classList.add("hidden");
+                  }
+              });
+          });
+      });
+  });
+</script>

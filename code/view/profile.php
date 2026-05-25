@@ -65,8 +65,7 @@
                       </div>
                         <div class="card-content">
                             <div class="card-tags">
-                                <span class="tag">Design</span>
-                                <span class="tag">Architecture</span>
+                                <span class="tag"><?= htmlspecialchars($post['category_name']) ?></span>
                             </div>
                             <h3 class="card-title">
                                 <a href="index.php?page=portfolio&id=<?= $post['id'] ?>">

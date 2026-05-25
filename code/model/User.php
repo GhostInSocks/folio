@@ -21,17 +21,22 @@ class User {
         return $statement->execute();
     }
 
-    public static function getUserPosts($userId) {
-        $db = DBInit::getInstance();
-        $stmt = $db->prepare("
-            SELECT cards.*, users.username
-            FROM cards
-            JOIN users ON cards.user_id = users.id
-            WHERE cards.user_id = :user_id
-            ORDER BY cards.id DESC
-        ");
-        $stmt->execute(['user_id' => $userId]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    public static function getUserPosts($user_id) {
+          $db = DBInit::getInstance();
+          
+          $stmt = $db->prepare("
+              SELECT cards.*, users.username, categories.name AS category_name
+              FROM cards
+              JOIN users ON cards.user_id = users.id
+              JOIN categories ON cards.category_id = categories.id
+              WHERE cards.user_id = :user_id
+              ORDER BY cards.id DESC
+          ");
+
+          $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+          $stmt->execute();
+
+          return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      }
 }
 ?>

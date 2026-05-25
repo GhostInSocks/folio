@@ -20,7 +20,7 @@ class PostController {
         $content = trim($data['description'] ?? '');
         $image_url = trim($data['image_url'] ?? '');
         $user_id = $_SESSION['user_id'];
-        $category_id = 1;
+        $category_id = isset($data['category_id']) ? (int)$data['category_id'] : 1;
 
         if (!empty($title)) {
             require_once 'model/Post.php';
@@ -66,9 +66,10 @@ class PostController {
         $title = trim($data['title'] ?? '');
         $content = trim($data['description'] ?? '');
         $image_url = trim($data['image_url'] ?? '');
+        $category_id = isset($data['category_id']) ? (int)$data['category_id'] : 1;
 
         if (!empty($title)) {
-            Post::update($id, $title, $content, $image_url);
+            Post::update($id, $title, $content, $image_url, $category_id);
             header("Location: index.php?page=profile");
             exit;
         }

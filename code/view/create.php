@@ -35,6 +35,18 @@
             </div>
 
             <div class="form-group">
+                <label for="category_id">Category <span class="required">*</span></label>
+                <select id="category_id" name="category_id" required class="form-select">
+                    <option value="1">Design</option>
+                    <option value="2">Development</option>
+                    <option value="3">Photography</option>
+                    <option value="4">Motion</option>
+                    <option value="5">Writing</option>
+                    <option value="6">Branding</option>
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="image_url">Cover Image URL</label>
                 <input type="url" id="image_url" name="image_url" placeholder="https://example.com/image.jpg">
                 <small class="form-hint">Paste a direct link to an image from the web (Unsplash, Pinterest, etc.)</small>

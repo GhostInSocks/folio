@@ -35,6 +35,18 @@
             </div>
 
             <div class="form-group">
+                <label for="category_id">Category <span class="required">*</span></label>
+                <select id="category_id" name="category_id" required class="form-select">
+                    <option value="1" <?= $post['category_id'] == 1 ? 'selected' : '' ?>>Design</option>
+                    <option value="2" <?= $post['category_id'] == 2 ? 'selected' : '' ?>>Development</option>
+                    <option value="3" <?= $post['category_id'] == 3 ? 'selected' : '' ?>>Photography</option>
+                    <option value="4" <?= $post['category_id'] == 4 ? 'selected' : '' ?>>Motion</option>
+                    <option value="5" <?= $post['category_id'] == 5 ? 'selected' : '' ?>>Writing</option>
+                    <option value="6" <?= $post['category_id'] == 6 ? 'selected' : '' ?>>Branding</option>
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="image_url">Cover Image URL</label>
                 <input type="url" id="image_url" name="image_url" value="<?= htmlspecialchars($post['image_url'] ?? '') ?>">
                 <small class="form-hint">Paste a new Pinterest or Unsplash direct image link</small>
