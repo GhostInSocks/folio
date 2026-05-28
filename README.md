@@ -21,3 +21,4 @@
 3. Uvozite priloženo SQL skripto (`baza.sql`), ki ustvari tabele in naloži začetnih 6 kategorij ter testne podatke.
 4. Prepričajte se, da so podatki za povezavo v datoteki `DBInit.php` pravilni (lokalni strežnik, uporabniško ime `root`, brez gesla).
 5. Odprite brskalnik in obiščite `http://localhost/folio/index.php`.
+6. Uporabniško ime: `admin`, Geslo: `admin123`
