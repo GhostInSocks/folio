@@ -1,4 +1,3 @@
-/* code/assets/style.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 * {
@@ -13,7 +12,6 @@ body {
     color: #2d2d2d;
 }
 
-/* Header */
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -64,7 +62,6 @@ body {
     color: #000000;
 }
 
-/* Gumbi */
 .btn-login {
     text-decoration: none;
     color: #000000;
@@ -87,7 +84,6 @@ body {
     background-color: #333333;
 }
 
-/* Discover Hero & Filtri */
 .discover-container {
     padding: 40px;
 }
@@ -231,9 +227,9 @@ body {
 }
 
 .project-card.hidden {
-    display: none;
-    opacity: 0;
-    transform: scale(0.95);
+    display: none !important;
+    opacity: 0 !important;
+    transform: scale(0.95) !important;
 }
 
 .project-card {

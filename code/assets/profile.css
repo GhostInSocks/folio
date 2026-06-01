@@ -60,7 +60,7 @@
     max-width: 700px;
 }
 
-.profile-stats {
+/* .profile-stats {
     display: flex;
     gap: 25px;
     font-size: 14px;
@@ -70,7 +70,7 @@
 
 .profile-stats strong {
     color: #000000;
-}
+} */
 
 .profile-divider {
     border: none;

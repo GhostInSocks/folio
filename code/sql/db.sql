@@ -37,16 +37,21 @@ CREATE TABLE IF NOT EXISTS `cards` (
 -- Data
 
 INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'Design'),
-(2, 'Development'),
-(3, 'Photography'),
-(4, 'Motion');
+  (1, 'Design'),
+  (2, 'Development'),
+  (3, 'Photography'),
+  (4, 'Writing'),
+  (5, 'Motion'),
+  (6, 'Branding');
 
 -- Geslo za 'admin' je 'admin123'
 INSERT INTO `users` (`id`, `username`, `password`, `bio`) VALUES
-(1, 'admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Product Designer based in Ljubljana.');
+(1, 'admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Sistemski administrator platforme.'),
+(2, 'lara_creative', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Visual Artist & Photographer capturing raw moments.'),
+(3, 'nejc_dev', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Full-stack developer into minimalist UI and layout systems.');
 
-INSERT INTO `cards` (`user_id`, `category_id`, `title`, `content`) VALUES
-(1, 1, 'Minimal Architecture Study', 'A photographic exploration of negative space.'),
-(1, 2, 'Tokyo Grid System', 'A working typographic grid developed for publication.'),
-(1, 3, 'The Quiet Season', 'Capturing the stillness of winter in the city.');
+INSERT INTO `cards` (`user_id`, `category_id`, `title`, `content`, `image_url`) VALUES
+(2, 3, 'The Quiet Season', 'Capturing the stillness of winter in the city through an analogue lens.', 'https://i.pinimg.com/1200x/3b/70/3c/3b703c7055ceda4a8d60b7b4940ae9f0.jpg'),
+(2, 6, 'Studio Identity', 'Complete branding package for a modern architectural bureau.', 'https://i.pinimg.com/1200x/af/36/8a/af368a99347b115291eb6605a25efc3e.jpg'),
+(3, 1, 'Tokyo Grid System', 'A working typographic grid developed for print and web publication.', 'https://i.pinimg.com/736x/7a/db/f5/7adbf540e1ebffab57a2ababd2bfc090.jpg'),
+(3, 2, 'Portfolio Core Engine', 'Lightweight MVC PHP framework built for creative agencies.', 'https://i.pinimg.com/1200x/01/35/6c/01356c44e0be89c2cc20a07366f441a7.jpg');

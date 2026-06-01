@@ -83,13 +83,11 @@
 
       filterButtons.forEach(button => {
           button.addEventListener("click", function() {
-              // 1. Odstrani 'active' razred z vseh gumbov in ga dodaj kliknjenemu
               filterButtons.forEach(btn => btn.classList.remove("active"));
               this.classList.add("active");
 
               const filterValue = this.getAttribute("data-filter");
 
-              // 2. Filtriraj kartice
               projectCards.forEach(card => {
                   const cardCategory = card.getAttribute("data-category");
 
